@@ -1,0 +1,28 @@
+extends layout
+block content
+    h1= title
+        table.table.table-striped
+            thead
+                tr
+                    th Nom
+                    th Prix
+        tbody
+            each product in products
+                tr
+                    td= product.nom
+                    td= product.prix
+                    td
+                        a(href=`/products/${product._id}/edit`) Modifier
+                    td 
+                        form(action=`/products/${product._id}?_method=DELETE` method='post')
+                            button(type='submit') Supprimer
+
+    h2 Ajouter un nouveau produit
+        form(action='/products' method='post')
+            label(for='nom') Nom
+            input#nom(type='text' name='nom' required)
+
+            label(for='prix') Prix
+            input#prenom(type='text' name='prix' required)
+
+            button(type='submit') Ajouter

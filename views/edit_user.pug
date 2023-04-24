@@ -1,0 +1,13 @@
+extends layout
+block content
+    h1 Modifier un utilisateur
+        form(action=`/users/${user._id}` method='put')
+            input(type='hidden' name='_method' value='put')
+
+            label(for='nom') Nom
+            input#nom(type='text' name='nom' value=client.nom required)
+
+            label(for='prenom') Prénom
+            input#prenom(type='text' name='prenom' value=client.prenom required)
+
+            button(type='submit') Mettre à jour
